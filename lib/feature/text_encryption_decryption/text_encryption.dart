@@ -1,6 +1,7 @@
 import '../../core/en_letters.dart';
 import '../../core/model/key_model.dart';
 import '../../core/model/letters_key_model.dart';
+import '../key_generation/extract_key.dart';
 import '../key_generation/generate_key.dart';
 
 class TextEncryption {
@@ -14,9 +15,12 @@ class TextEncryption {
       encryptedString,
       keyModel.letters,
     );
+    String extractKey = ExtractKey.extractKey(encryptedStringWithKey);
 
+    print("Letters  : ${keyModel.letters}");
     print("Plain Text  : $plainText");
     print("Cipher Text : $encryptedStringWithKey");
+    print("Key : $extractKey");
   }
 
   static List<int> _convertPlainToInt(String plain) {
