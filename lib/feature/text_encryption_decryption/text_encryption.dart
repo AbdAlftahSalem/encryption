@@ -17,7 +17,6 @@ class TextEncryption {
     );
     String extractKey = ExtractKey.extractKey(encryptedStringWithKey);
 
-    print("Letters  : ${keyModel.letters}");
     print("Plain Text  : $plainText");
     print("Cipher Text : $encryptedStringWithKey");
     print("Key : $extractKey");

@@ -19,6 +19,6 @@ class LettersKeyModel {
 
   @override
   String toString() {
-    return 'LettersKeyModel{n1: $n1, n2: $n2, n3: $n3, n4: $n4, n5: $n5, n6: $n6, l1: $l1, l2: $l2, l3: $l3, l4: $l4, l5: $l5, l6: $l6}';
+    return 'LettersKeyModel{n1: $n1, n2: $n2, n3: $n3, n4: $n4, n5: $n5, n6: $n6, l1: $l1, l2: $l2, l3: $l3, l4: $l4, l5: $l5, l6: $l6}\nThe Full Key : $l1 $l2 $l3 $l4 $l5 $l6';
   }
 }
