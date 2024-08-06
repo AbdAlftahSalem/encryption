@@ -6,9 +6,13 @@ import '../../core/model/letters_key_model.dart';
 
 class TextEncryption {
   static void textEncryption(String plainText) {
-    // List<int> plainToIntList = _convertPlainToInt(plainText);
-    KeyModel keyModel = generateKey();
-    print(keyModel.toString());
+    KeyModel keyModel = _generateKey();
+    List<int> plainToIntList = _convertPlainToInt(plainText);
+    List<int> encryptedInts = _encryptListInt(plainToIntList, keyModel.key);
+    String encryptedString =
+        _convertEncryptedIntToEncryptedString(encryptedInts);
+    print("Plain Text  : $plainText");
+    print("Cipher Text : $encryptedString");
   }
 
   static List<int> _convertPlainToInt(String plain) {
@@ -21,13 +25,34 @@ class TextEncryption {
     return convertPlainToIntList;
   }
 
-  static KeyModel generateKey() {
-    int n1 = Random().nextInt(25);
-    int n2 = Random().nextInt(25);
-    int n3 = Random().nextInt(25);
-    int n4 = Random().nextInt(25);
-    int n5 = Random().nextInt(25);
-    int n6 = Random().nextInt(25);
+  // equation : c = ( p + k ) %  n
+  static List<int> _encryptListInt(List<int> plainInt, int key) {
+    List<int> encryptedInts = [];
+    for (var letterInt in plainInt) {
+      int c = (letterInt + key) % 27;
+      encryptedInts.add(c);
+    }
+
+    return encryptedInts;
+  }
+
+  static String _convertEncryptedIntToEncryptedString(List<int> encryptedInts) {
+    List<String> encryptedStrings = [];
+    for (var encryptedInt in encryptedInts) {
+      String stringValue = EnLetters.enLettersIntKey[encryptedInt] ?? "";
+      encryptedStrings.add(stringValue);
+    }
+
+    return encryptedStrings.join();
+  }
+
+  static KeyModel _generateKey() {
+    int n1 = Random().nextInt(26) + 1;
+    int n2 = Random().nextInt(26) + 1;
+    int n3 = Random().nextInt(26) + 1;
+    int n4 = Random().nextInt(26) + 1;
+    int n5 = Random().nextInt(26) + 1;
+    int n6 = Random().nextInt(26) + 1;
 
     String l1 = EnLetters.enLettersIntKey[n1] ?? "";
     String l2 = EnLetters.enLettersIntKey[n2] ?? "";
