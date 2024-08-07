@@ -17,19 +17,18 @@ class ExtractKey {
       newCipherText = newCipherText.replaceRange(
           newCipherText.length - 2, newCipherText.length, "");
 
-      if (cipherText.length % 2 != 0) {
-        newCipherText = newCipherText.replaceRange(
-            (newCipherText.length ~/ 2) - 1, (newCipherText.length ~/ 2), "");
-      } else {
-        newCipherText = newCipherText.replaceRange(
-            (newCipherText.length ~/ 2) - 2, ((newCipherText.length ~/ 2) ), "");
-      }
+      int start = (newCipherText.length ~/ 2) - 1;
+      int end = (newCipherText.length ~/ 2) + 1;
+
+      newCipherText =
+          newCipherText.substring(0, start) + "" + newCipherText.substring(end);
+
       return newCipherText;
     } else {
       newCipherText = cipherText.replaceRange(0, 3, "");
       newCipherText =
-          cipherText.replaceRange(cipherText.length - 3, cipherText.length, "");
-      return cipherText;
+          newCipherText.replaceRange(newCipherText.length - 3, null, "");
+      return newCipherText;
     }
   }
 

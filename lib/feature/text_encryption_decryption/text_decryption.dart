@@ -8,27 +8,25 @@ class TextDecryption {
   static String textDecryption(String cipherText) {
     String key = ExtractKey.extractKey(cipherText);
     List<int> intKey = _convertStringKeyToListInt(key);
-    LettersKeyModel lettersKeyModel = LettersKeyModel(
-      n1: intKey[0],
-      n2: intKey[1],
-      n3: intKey[2],
-      n4: intKey[3],
-      n5: intKey[4],
-      n6: intKey[5],
-      l1: key[0],
-      l2: key[1],
-      l3: key[2],
-      l4: key[3],
-      l5: key[4],
-      l6: key[5],
-    );
+    // LettersKeyModel lettersKeyModel = LettersKeyModel(
+    //   n1: intKey[0],
+    //   n2: intKey[1],
+    //   n3: intKey[2],
+    //   n4: intKey[3],
+    //   n5: intKey[4],
+    //   n6: intKey[5],
+    //   l1: key[0],
+    //   l2: key[1],
+    //   l3: key[2],
+    //   l4: key[3],
+    //   l5: key[4],
+    //   l6: key[5],
+    // );
     cipherText = ExtractKey.extractCipherWithoutKey(cipherText);
-    print(cipherText.length);
     List<int> cipherTextAsInt = _convertCipherToInt(cipherText);
     List<int> plainInts =
         _convertCipherListIntToPlainListInt(cipherTextAsInt, key);
     String plainText = convertPlainIntToString(plainInts);
-
     return plainText;
   }
 
