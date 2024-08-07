@@ -5,7 +5,7 @@ import '../../core/model/key_model.dart';
 import '../../core/model/letters_key_model.dart';
 
 class GenerateKey {
-  static KeyModel generateKey() {
+  static KeyModel generateNewKey() {
     int n1 = Random().nextInt(26) + 1;
     int n2 = Random().nextInt(26) + 1;
     int n3 = Random().nextInt(26) + 1;
@@ -44,5 +44,37 @@ class GenerateKey {
       key: key,
       letters: lettersKey,
     );
+  }
+
+  static KeyModel getFullKey(String key) {
+    List<String> keySplit = key.split("");
+
+    int n1 = EnLetters.enLettersStringKey[keySplit[0]] ?? 0;
+    int n2 = EnLetters.enLettersStringKey[keySplit[1]] ?? 0;
+    int n3 = EnLetters.enLettersStringKey[keySplit[2]] ?? 0;
+    int n4 = EnLetters.enLettersStringKey[keySplit[3]] ?? 0;
+    int n5 = EnLetters.enLettersStringKey[keySplit[4]] ?? 0;
+    int n6 = EnLetters.enLettersStringKey[keySplit[5]] ?? 0;
+
+    LettersKeyModel lettersKey = LettersKeyModel(
+      n1: n1,
+      n2: n2,
+      n3: n3,
+      n4: n4,
+      n5: n5,
+      n6: n6,
+      l1: keySplit[0],
+      l2: keySplit[1],
+      l3: keySplit[2],
+      l4: keySplit[3],
+      l5: keySplit[4],
+      l6: keySplit[5],
+    );
+
+    int intKey = ((lettersKey.n1 + lettersKey.n2) +
+            (lettersKey.n3 / lettersKey.n4) +
+            (lettersKey.n5 * lettersKey.n6))
+        .toInt();
+    return KeyModel(key: intKey, letters: lettersKey);
   }
 }

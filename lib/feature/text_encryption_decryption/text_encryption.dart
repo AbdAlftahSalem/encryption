@@ -5,8 +5,8 @@ import '../key_generation/extract_key.dart';
 import '../key_generation/generate_key.dart';
 
 class TextEncryption {
-  static void textEncryption(String plainText) {
-    KeyModel keyModel = GenerateKey.generateKey();
+  static String textEncryption(String plainText) {
+    KeyModel keyModel = GenerateKey.generateNewKey();
     List<int> plainToIntList = _convertPlainToInt(plainText);
     List<int> encryptedInts = _encryptListInt(plainToIntList, keyModel.key);
     String encryptedString =
@@ -17,9 +17,10 @@ class TextEncryption {
     );
     String extractKey = ExtractKey.extractKey(encryptedStringWithKey);
 
-    print("Plain Text  : $plainText");
-    print("Cipher Text : $encryptedStringWithKey");
-    print("Key : $extractKey");
+    // print("Plain Text  : $plainText");
+    // print("Cipher Text : $encryptedStringWithKey");
+    // print("Key : $extractKey \n\n");
+    return encryptedStringWithKey;
   }
 
   static List<int> _convertPlainToInt(String plain) {
