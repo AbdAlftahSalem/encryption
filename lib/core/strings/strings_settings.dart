@@ -1,4 +1,5 @@
 import './en_letters.dart';
+import './symbol.dart';
 
 class StringsSettings {
   // create singleton for ConstStrings
@@ -13,13 +14,15 @@ class StringsSettings {
   int length = 0;
 
   void setupLetters() {
-    // Setup maps with int key
+    // Setup EN letters
     lettersWithIntKey.addAll(EnLetters.instance.enSmallLettersIntKey);
     lettersWithIntKey.addAll(EnLetters.instance.enCapitalLettersIntKey);
-
-    // Setup maps with string key
     lettersWithStringKey.addAll(EnLetters.instance.enSmallLettersStringKey);
     lettersWithStringKey.addAll(EnLetters.instance.enCapitalLettersStringKey);
+
+    // Setup Symbols
+    lettersWithStringKey.addAll(Symbols.instance.symbolsWithStringKey);
+    lettersWithIntKey.addAll(Symbols.instance.symbolsWithIntKey);
 
     length = lettersWithStringKey.length;
   }
