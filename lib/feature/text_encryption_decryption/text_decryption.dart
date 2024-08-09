@@ -1,35 +1,30 @@
 import '../../core/en_letters.dart';
 import '../../core/model/key_model.dart';
-import '../../core/model/letters_key_model.dart';
 import '../key_generation/extract_key.dart';
 import '../key_generation/generate_key.dart';
 
 class TextDecryption {
+  /// Decryption [cipherText] and extract key from it .
   static String textDecryption(String cipherText) {
+    // extract key from Cipher Text
     String key = ExtractKey.extractKey(cipherText);
-    List<int> intKey = _convertStringKeyToListInt(key);
-    // LettersKeyModel lettersKeyModel = LettersKeyModel(
-    //   n1: intKey[0],
-    //   n2: intKey[1],
-    //   n3: intKey[2],
-    //   n4: intKey[3],
-    //   n5: intKey[4],
-    //   n6: intKey[5],
-    //   l1: key[0],
-    //   l2: key[1],
-    //   l3: key[2],
-    //   l4: key[3],
-    //   l5: key[4],
-    //   l6: key[5],
-    // );
+
+    // get cipher text without key
     cipherText = ExtractKey.extractCipherWithoutKey(cipherText);
+
+    // convert Cipher Text ( String ) to Cipher Text ( List<int> )
     List<int> cipherTextAsInt = _convertCipherToInt(cipherText);
+
+    // Decryption Cipher Text List<Int>
     List<int> plainInts =
         _convertCipherListIntToPlainListInt(cipherTextAsInt, key);
+
+    // Convert Plain List<int> to readable String
     String plainText = convertPlainIntToString(plainInts);
     return plainText;
   }
 
+  /// get cipher text without key
   static List<int> _convertCipherToInt(String cipher) {
     List<String> splitCipherText = cipher.split('');
     List<int> convertCipherToIntList = [];
@@ -40,16 +35,7 @@ class TextDecryption {
     return convertCipherToIntList;
   }
 
-  static List<int> _convertStringKeyToListInt(String key) {
-    List<String> splitKey = key.split("");
-    List<int> intKey = [];
-    for (String letter in splitKey) {
-      int value = EnLetters.enLettersStringKey[letter] ?? 0;
-      intKey.add(value);
-    }
-    return intKey;
-  }
-
+  /// Decryption Cipher Text List<Int>
   static List<int> _convertCipherListIntToPlainListInt(
       List<int> cipherInts, String key) {
     KeyModel keyModel = GenerateKey.getFullKey(key);
@@ -62,6 +48,7 @@ class TextDecryption {
     return plainInts;
   }
 
+  /// Convert Plain List<int> to readable String
   static String convertPlainIntToString(List<int> plainInts) {
     List<String> plainStrings = [];
     for (int i in plainInts) {
