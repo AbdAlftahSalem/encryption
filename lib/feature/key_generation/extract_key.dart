@@ -1,5 +1,5 @@
-// ToDO : This need som refactor
 class ExtractKey {
+  /// Get Key from [cipherText]
   static String extractKey(String cipherText) {
     String fullKey = "";
 
@@ -14,15 +14,20 @@ class ExtractKey {
   static extractCipherWithoutKey(String cipherText) {
     String newCipherText = "";
     if ((cipherText.length - 6) > 4) {
+      // Get first 2 digits
       newCipherText = cipherText.replaceRange(0, 2, "");
+
+      // Get Last tow digits
       newCipherText = newCipherText.replaceRange(
           newCipherText.length - 2, newCipherText.length, "");
 
-      int start = (newCipherText.length ~/ 2) - 1;
-      int end = (newCipherText.length ~/ 2) + 1;
+      // Get the middle digits
+      int startIndex = (newCipherText.length ~/ 2) - 1;
+      int endIndex = (newCipherText.length ~/ 2) + 1;
 
-      newCipherText =
-          newCipherText.substring(0, start) + "" + newCipherText.substring(end);
+      newCipherText = newCipherText.substring(0, startIndex) +
+          "" +
+          newCipherText.substring(endIndex);
 
       return newCipherText;
     } else {
@@ -46,7 +51,11 @@ class ExtractKey {
     String firstDigitsKey = "";
     String lastDigitsKey = "";
     String midDigitsKey = "";
+
+    // Get first 2 digits
     firstDigitsKey = cipherText[0] + cipherText[1];
+
+    // Get Last tow digits
     lastDigitsKey =
         cipherText[cipherText.length - 2] + cipherText[cipherText.length - 1];
     cipherText = cipherText.replaceRange(0, 2, "");
@@ -56,12 +65,15 @@ class ExtractKey {
       "",
     );
 
+    // Get the middle digits
     if (cipherText.length % 2 != 0) {
-      midDigitsKey += cipherText[(cipherText.length ~/ 2) - 1] +
-          cipherText[(cipherText.length ~/ 2)];
+      int startIndex = (cipherText.length ~/ 2) - 1;
+      int endIndex = (cipherText.length ~/ 2);
+      midDigitsKey += cipherText[startIndex] + cipherText[endIndex];
     } else {
-      midDigitsKey = cipherText[(cipherText.length ~/ 2) - 2] +
-          cipherText[((cipherText.length ~/ 2) - 1)];
+      int startIndex = (cipherText.length ~/ 2) - 2;
+      int endIndex = ((cipherText.length ~/ 2) - 1);
+      midDigitsKey = cipherText[startIndex] + cipherText[endIndex];
     }
 
     return firstDigitsKey + midDigitsKey + lastDigitsKey;
