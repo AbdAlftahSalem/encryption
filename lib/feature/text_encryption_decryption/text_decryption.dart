@@ -1,4 +1,4 @@
-import '../../core/en_letters.dart';
+import '../../core/strings/strings_settings.dart';
 import '../../core/model/key_model.dart';
 import '../key_generation/extract_key.dart';
 import '../key_generation/generate_key.dart';
@@ -29,7 +29,7 @@ class TextDecryption {
     List<String> splitCipherText = cipher.split('');
     List<int> convertCipherToIntList = [];
     for (String i in splitCipherText) {
-      int intValueForLetter = EnLetters.enLettersStringKey[i] ?? 0;
+      int intValueForLetter = StringsSettings.instance.lettersWithStringKey[i] ?? 0;
       convertCipherToIntList.add(intValueForLetter);
     }
     return convertCipherToIntList;
@@ -41,7 +41,7 @@ class TextDecryption {
     KeyModel keyModel = GenerateKey.getFullKey(key);
     List<int> plainInts = [];
     for (int i in cipherInts) {
-      int plainInt = (i - keyModel.key) % 27;
+      int plainInt = (i - keyModel.key) % StringsSettings.instance.length;
       plainInts.add(plainInt);
     }
 
@@ -52,7 +52,7 @@ class TextDecryption {
   static String convertPlainIntToString(List<int> plainInts) {
     List<String> plainStrings = [];
     for (int i in plainInts) {
-      String letter = EnLetters.enLettersIntKey[i] ?? "";
+      String letter = StringsSettings.instance.lettersWithIntKey[i] ?? "";
       plainStrings.add(letter);
     }
 
