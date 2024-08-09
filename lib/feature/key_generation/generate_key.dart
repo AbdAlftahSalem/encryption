@@ -5,7 +5,9 @@ import '../../core/model/key_model.dart';
 import '../../core/model/letters_key_model.dart';
 
 class GenerateKey {
+  //. Generate a random key with 6 digits of letters
   static KeyModel generateNewKey() {
+    // generate random 6 number start from 1 and end in 27
     int n1 = Random().nextInt(26) + 1;
     int n2 = Random().nextInt(26) + 1;
     int n3 = Random().nextInt(26) + 1;
@@ -13,6 +15,7 @@ class GenerateKey {
     int n5 = Random().nextInt(26) + 1;
     int n6 = Random().nextInt(26) + 1;
 
+    // Get key string by generated random numbers
     String l1 = EnLetters.enLettersIntKey[n1] ?? "";
     String l2 = EnLetters.enLettersIntKey[n2] ?? "";
     String l3 = EnLetters.enLettersIntKey[n3] ?? "";
@@ -35,6 +38,7 @@ class GenerateKey {
       l6: l6,
     );
 
+    // Build Key with this equation => ( n1 + n2 ) + ( n3 / n4 ) + ( n5 * n6 )
     int key = ((lettersKey.n1 + lettersKey.n2) +
             (lettersKey.n3 / lettersKey.n4) +
             (lettersKey.n5 * lettersKey.n6))
@@ -46,6 +50,7 @@ class GenerateKey {
     );
   }
 
+  /// get Full Key model by know [key] as string
   static KeyModel getFullKey(String key) {
     List<String> keySplit = key.split("");
 
