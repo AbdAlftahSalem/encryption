@@ -1,19 +1,25 @@
 import 'dart:math';
 
-import '../../core/strings/strings_settings.dart';
 import '../../core/model/key_model.dart';
 import '../../core/model/letters_key_model.dart';
+import '../../core/strings/strings_settings.dart';
+
+/*
+1- If plain text 1 letter ( Key generate using 3 letters ). equation => ket = (n1 * 8) ^ n1
+2- If plain text 5 to 2 letters  ( Key generate using 3 letters ). equation => ket = (n1 * n2) ^ n3
+3- If plain text more than 5 letter ( Key generate using 6 letters ) . equation => Key = ( n1 + n2 ) + ( n3 / n4 ) + ( n5 * n6 )
+*/
 
 class GenerateKey {
   //. Generate a random key with 6 digits of letters
   static KeyModel generateNewKey() {
     // generate random 6 number start from 1 and end in 27
-    int n1 = Random().nextInt(StringsSettings.instance.length -1) + 1;
-    int n2 = Random().nextInt(StringsSettings.instance.length -1) + 1;
-    int n3 = Random().nextInt(StringsSettings.instance.length -1) + 1;
-    int n4 = Random().nextInt(StringsSettings.instance.length -1) + 1;
-    int n5 = Random().nextInt(StringsSettings.instance.length -1) + 1;
-    int n6 = Random().nextInt(StringsSettings.instance.length -1) + 1;
+    int n1 = Random().nextInt(StringsSettings.instance.length - 1) + 1;
+    int n2 = Random().nextInt(StringsSettings.instance.length - 1) + 1;
+    int n3 = Random().nextInt(StringsSettings.instance.length - 1) + 1;
+    int n4 = Random().nextInt(StringsSettings.instance.length - 1) + 1;
+    int n5 = Random().nextInt(StringsSettings.instance.length - 1) + 1;
+    int n6 = Random().nextInt(StringsSettings.instance.length - 1) + 1;
 
     // Get key string by generated random numbers
     String l1 = StringsSettings.instance.lettersWithIntKey[n1] ?? "";
