@@ -13,7 +13,24 @@ import '../../core/strings/strings_settings.dart';
 class GenerateKey {
   //. Generate a random key with 6 digits of letters
   static KeyModel generateNewKey() {
-    // generate random 6 number start from 1 and end in 27
+    // generate random 6 number start from 1 and end in length of letters
+    LettersKeyModel lettersKey = _generateLetterKeyModel();
+
+    // Build Key with this equation => ( n1 + n2 ) + ( n3 / n4 ) + ( n5 * n6 )
+    int key = _buildKey(lettersKey);
+
+    return KeyModel(key: key, letters: lettersKey);
+  }
+
+  static int _buildKey(LettersKeyModel lettersKey) {
+    int key = ((lettersKey.n1 + lettersKey.n2) +
+            (lettersKey.n3 / lettersKey.n4) +
+            (lettersKey.n5 * lettersKey.n6))
+        .toInt();
+    return key;
+  }
+
+  static LettersKeyModel _generateLetterKeyModel() {
     int n1 = Random().nextInt(StringsSettings.instance.length - 1) + 1;
     int n2 = Random().nextInt(StringsSettings.instance.length - 1) + 1;
     int n3 = Random().nextInt(StringsSettings.instance.length - 1) + 1;
@@ -43,17 +60,7 @@ class GenerateKey {
       l5: l5,
       l6: l6,
     );
-
-    // Build Key with this equation => ( n1 + n2 ) + ( n3 / n4 ) + ( n5 * n6 )
-    int key = ((lettersKey.n1 + lettersKey.n2) +
-            (lettersKey.n3 / lettersKey.n4) +
-            (lettersKey.n5 * lettersKey.n6))
-        .toInt();
-
-    return KeyModel(
-      key: key,
-      letters: lettersKey,
-    );
+    return lettersKey;
   }
 
   /// get Full Key model by know [key] as string
@@ -82,10 +89,7 @@ class GenerateKey {
       l6: keySplit[5],
     );
 
-    int intKey = ((lettersKey.n1 + lettersKey.n2) +
-            (lettersKey.n3 / lettersKey.n4) +
-            (lettersKey.n5 * lettersKey.n6))
-        .toInt();
+    int intKey = _buildKey(lettersKey);
     return KeyModel(key: intKey, letters: lettersKey);
   }
 }
