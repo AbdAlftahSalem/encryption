@@ -1,10 +1,17 @@
 import '../lib/encryption.dart';
 
 void main() {
-  String plainText = "abd alftah salem";
-  String cipherText = TextEncryption.textEncryption(plainText);
-  String encipherText = TextDecryption.textDecryption(cipherText);
-  print('Plain Text    : $plainText');
-  print('Cipher Text   : $cipherText');
-  print('Encipher Text : $encipherText');
+
+  // Test normal String [ EN ]
+  String plainNormalString = "Abd Alftah Salem";
+  String cipherNormalString = TextEncryption.textEncryption(plainNormalString);
+  String encipherNormalString =
+  TextDecryption.textDecryption(cipherNormalString);
+
+  // Test symbols
+  String plainSymbolString = "(=++*/\$@!*)";
+  String cipherSymbolString = TextEncryption.textEncryption(plainSymbolString);
+  String encipherSymbolString =
+  TextDecryption.textDecryption(cipherSymbolString);
+
 }
