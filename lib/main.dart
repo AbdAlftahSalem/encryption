@@ -7,10 +7,10 @@ void main(List<String> arguments) {
   LettersInit.instance.setupLetters();
 
   // Test normal String [ EN ]
-  String plainNormalString = "Abd Alftah Salem";
-  String cipherNormalString = TextEncryption.textEncryption(plainNormalString);
-  String encipherNormalString =
-      TextDecryption.textDecryption(cipherNormalString);
+  String plainEnString = "Abd Alftah Salem";
+  String cipherEnString = TextEncryption.textEncryption(plainEnString);
+  String encipherEnString =
+      TextDecryption.textDecryption(cipherEnString);
 
   // Test symbols
   String plainSymbolString = "(=++*/\$@!*)";
@@ -18,13 +18,24 @@ void main(List<String> arguments) {
   String encipherSymbolString =
       TextDecryption.textDecryption(cipherSymbolString);
 
-  print("\n" + ("*" * 25) + "  Test Normal String  " + ("*" * 25));
-  print("Plain Normal Text     : $plainNormalString");
-  print("Cipher Normal Text    : $cipherNormalString");
-  print("Encipher Normal Text  : $encipherNormalString");
+  // Test normal String [ AR ]
+  String plainArString = "عبد الفتاح سالم";
+  String cipherArString = TextEncryption.textEncryption(plainArString);
+  String encipherArString =
+  TextDecryption.textDecryption(cipherArString);
+
+  print("\n" + ("*" * 25) + "  Test EN String  " + ("*" * 25));
+  print("Plain EN Text     : $plainEnString");
+  print("Cipher EN Text    : $cipherEnString");
+  print("Encipher EN Text  : $encipherEnString");
 
   print("\n" + ("*" * 25) + "  Test Symbols String  " + ("*" * 25));
   print("Plain Symbol Text     : $plainSymbolString");
   print("Cipher Symbol Text    : $cipherSymbolString");
   print("Encipher Symbol Text  : $encipherSymbolString");
+
+  print("\n" + ("*" * 25) + "  Test AR String  " + ("*" * 25));
+  print("Plain AR Text     : $plainArString");
+  print("Cipher AR Text    : $cipherArString");
+  print("Encipher AR Text  : $encipherArString");
 }
