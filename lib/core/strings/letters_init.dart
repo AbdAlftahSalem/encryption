@@ -1,13 +1,13 @@
-import './en_letters.dart';
-import './symbol.dart';
+import './letters/symbol.dart';
+import 'letters/en_letters.dart';
 
-class StringsSettings {
+class LettersInit {
   // create singleton for ConstStrings
-  static final StringsSettings instance = StringsSettings._internal();
+  static final LettersInit instance = LettersInit._internal();
 
-  factory StringsSettings() => instance;
+  factory LettersInit() => instance;
 
-  StringsSettings._internal();
+  LettersInit._internal();
 
   Map<int, String> lettersWithIntKey = {};
   Map<String, int> lettersWithStringKey = {};

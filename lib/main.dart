@@ -1,10 +1,10 @@
 import './feature/text_encryption_decryption/text_decryption.dart';
 import './feature/text_encryption_decryption/text_encryption.dart';
-import 'core/strings/strings_settings.dart';
+import 'core/strings/letters_init.dart';
 
 void main(List<String> arguments) {
   // Setup letter to encryption and decryption
-  StringsSettings.instance.setupLetters();
+  LettersInit.instance.setupLetters();
 
   // Test normal String [ EN ]
   String plainNormalString = "Abd Alftah Salem";

@@ -1,4 +1,4 @@
-import '../../core/strings/strings_settings.dart';
+import '../../core/strings/letters_init.dart';
 import '../../core/model/key_model.dart';
 import '../../core/model/letters_key_model.dart';
 import '../key_generation/generate_key.dart';
@@ -34,7 +34,7 @@ class TextEncryption {
     List<int> convertPlainToIntList = [];
     for (String i in splitPlainText) {
       int intValueForLetter =
-          StringsSettings.instance.lettersWithStringKey[i] ?? 0;
+          LettersInit.instance.lettersWithStringKey[i] ?? 0;
       convertPlainToIntList.add(intValueForLetter);
     }
     return convertPlainToIntList;
@@ -45,7 +45,7 @@ class TextEncryption {
   static List<int> _encryptListInt(List<int> plainInt, int key) {
     List<int> encryptedInts = [];
     for (var letterInt in plainInt) {
-      int c = (letterInt + key) % StringsSettings.instance.length;
+      int c = (letterInt + key) % LettersInit.instance.length;
       encryptedInts.add(c);
     }
 
@@ -57,7 +57,7 @@ class TextEncryption {
     List<String> encryptedStrings = [];
     for (var encryptedInt in encryptedInts) {
       String stringValue =
-          StringsSettings.instance.lettersWithIntKey[encryptedInt] ?? "";
+          LettersInit.instance.lettersWithIntKey[encryptedInt] ?? "";
       encryptedStrings.add(stringValue);
     }
 

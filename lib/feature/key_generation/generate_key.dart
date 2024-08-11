@@ -2,7 +2,7 @@ import 'dart:math';
 
 import '../../core/model/key_model.dart';
 import '../../core/model/letters_key_model.dart';
-import '../../core/strings/strings_settings.dart';
+import '../../core/strings/letters_init.dart';
 
 /*
 1- If plain text 1 letter ( Key generate using 3 letters ). equation => ket = (n1 * 8) ^ n1
@@ -31,20 +31,20 @@ class GenerateKey {
   }
 
   static LettersKeyModel _generateLetterKeyModel() {
-    int n1 = Random().nextInt(StringsSettings.instance.length - 1) + 1;
-    int n2 = Random().nextInt(StringsSettings.instance.length - 1) + 1;
-    int n3 = Random().nextInt(StringsSettings.instance.length - 1) + 1;
-    int n4 = Random().nextInt(StringsSettings.instance.length - 1) + 1;
-    int n5 = Random().nextInt(StringsSettings.instance.length - 1) + 1;
-    int n6 = Random().nextInt(StringsSettings.instance.length - 1) + 1;
+    int n1 = Random().nextInt(LettersInit.instance.length - 1) + 1;
+    int n2 = Random().nextInt(LettersInit.instance.length - 1) + 1;
+    int n3 = Random().nextInt(LettersInit.instance.length - 1) + 1;
+    int n4 = Random().nextInt(LettersInit.instance.length - 1) + 1;
+    int n5 = Random().nextInt(LettersInit.instance.length - 1) + 1;
+    int n6 = Random().nextInt(LettersInit.instance.length - 1) + 1;
 
     // Get key string by generated random numbers
-    String l1 = StringsSettings.instance.lettersWithIntKey[n1] ?? "";
-    String l2 = StringsSettings.instance.lettersWithIntKey[n2] ?? "";
-    String l3 = StringsSettings.instance.lettersWithIntKey[n3] ?? "";
-    String l4 = StringsSettings.instance.lettersWithIntKey[n4] ?? "";
-    String l5 = StringsSettings.instance.lettersWithIntKey[n5] ?? "";
-    String l6 = StringsSettings.instance.lettersWithIntKey[n6] ?? "";
+    String l1 = LettersInit.instance.lettersWithIntKey[n1] ?? "";
+    String l2 = LettersInit.instance.lettersWithIntKey[n2] ?? "";
+    String l3 = LettersInit.instance.lettersWithIntKey[n3] ?? "";
+    String l4 = LettersInit.instance.lettersWithIntKey[n4] ?? "";
+    String l5 = LettersInit.instance.lettersWithIntKey[n5] ?? "";
+    String l6 = LettersInit.instance.lettersWithIntKey[n6] ?? "";
 
     LettersKeyModel lettersKey = LettersKeyModel(
       n1: n1,
@@ -67,12 +67,12 @@ class GenerateKey {
   static KeyModel getFullKey(String key) {
     List<String> keySplit = key.split("");
 
-    int n1 = StringsSettings.instance.lettersWithStringKey[keySplit[0]] ?? 0;
-    int n2 = StringsSettings.instance.lettersWithStringKey[keySplit[1]] ?? 0;
-    int n3 = StringsSettings.instance.lettersWithStringKey[keySplit[2]] ?? 0;
-    int n4 = StringsSettings.instance.lettersWithStringKey[keySplit[3]] ?? 0;
-    int n5 = StringsSettings.instance.lettersWithStringKey[keySplit[4]] ?? 0;
-    int n6 = StringsSettings.instance.lettersWithStringKey[keySplit[5]] ?? 0;
+    int n1 = LettersInit.instance.lettersWithStringKey[keySplit[0]] ?? 0;
+    int n2 = LettersInit.instance.lettersWithStringKey[keySplit[1]] ?? 0;
+    int n3 = LettersInit.instance.lettersWithStringKey[keySplit[2]] ?? 0;
+    int n4 = LettersInit.instance.lettersWithStringKey[keySplit[3]] ?? 0;
+    int n5 = LettersInit.instance.lettersWithStringKey[keySplit[4]] ?? 0;
+    int n6 = LettersInit.instance.lettersWithStringKey[keySplit[5]] ?? 0;
 
     LettersKeyModel lettersKey = LettersKeyModel(
       n1: n1,
