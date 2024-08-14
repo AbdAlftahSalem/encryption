@@ -1,5 +1,5 @@
-import '../../core/strings/letters_init.dart';
 import '../../core/model/key_model.dart';
+import '../../core/strings/letters_init.dart';
 import '../key_generation/extract_key.dart';
 import '../key_generation/generate_key.dart';
 
@@ -16,9 +16,16 @@ class TextDecryption {
     List<int> cipherTextAsInt = _convertCipherToInt(cipherText);
 
     // Decryption Cipher Text List<Int>
-    List<int> plainInts =
-        _convertCipherListIntToPlainListInt(cipherTextAsInt, key);
-
+    List<int> plainInts = [];
+    int i = 0;
+    KeyModel keyModel = GenerateKey.getFullKey(key);
+    while (i < keyModel.key) {
+      plainInts = _convertCipherListIntToPlainListInt(
+        i == 0 ? cipherTextAsInt : plainInts,
+        key,
+      );
+      ++i;
+    }
     // Convert Plain List<int> to readable String
     String plainText = convertPlainIntToString(plainInts);
     return plainText;

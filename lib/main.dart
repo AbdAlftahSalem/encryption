@@ -7,10 +7,9 @@ void main(List<String> arguments) {
   LettersInit.instance.setupLetters();
 
   // Test normal String [ EN ]
-  String plainEnString = "Abd Alftah Salem";
+  String plainEnString = "Abd Alftah Nedal AlShanti";
   String cipherEnString = TextEncryption.textEncryption(plainEnString);
-  String encipherEnString =
-      TextDecryption.textDecryption(cipherEnString);
+  String encipherEnString = TextDecryption.textDecryption(cipherEnString);
 
   // Test symbols
   String plainSymbolString = "(=++*/\$@!*)";
@@ -19,10 +18,9 @@ void main(List<String> arguments) {
       TextDecryption.textDecryption(cipherSymbolString);
 
   // Test normal String [ AR ]
-  String plainArString = "عبد الفتاح سالم";
+  String plainArString = "عبد الفتاح نضال الشنطي";
   String cipherArString = TextEncryption.textEncryption(plainArString);
-  String encipherArString =
-  TextDecryption.textDecryption(cipherArString);
+  String encipherArString = TextDecryption.textDecryption(cipherArString);
 
   print("\n" + ("*" * 25) + "  Test EN String  " + ("*" * 25));
   print("Plain EN Text     : $plainEnString");

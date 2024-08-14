@@ -1,6 +1,6 @@
-import '../../core/strings/letters_init.dart';
 import '../../core/model/key_model.dart';
 import '../../core/model/letters_key_model.dart';
+import '../../core/strings/letters_init.dart';
 import '../key_generation/generate_key.dart';
 
 class TextEncryption {
@@ -13,7 +13,15 @@ class TextEncryption {
     List<int> plainToIntList = _convertPlainToInt(plainText);
 
     // Encrypt list<int>
-    List<int> encryptedInts = _encryptListInt(plainToIntList, keyModel.key);
+    int i = 0;
+    List<int> encryptedInts = [];
+    while (i < keyModel.key) {
+      encryptedInts = _encryptListInt(
+        i == 0 ? plainToIntList : encryptedInts,
+        keyModel.key,
+      );
+      ++i;
+    }
 
     //  Convert list<int> to cipher text
     String encryptedString =
@@ -33,8 +41,7 @@ class TextEncryption {
     List<String> splitPlainText = plain.split('');
     List<int> convertPlainToIntList = [];
     for (String i in splitPlainText) {
-      int intValueForLetter =
-          LettersInit.instance.lettersWithStringKey[i] ?? 0;
+      int intValueForLetter = LettersInit.instance.lettersWithStringKey[i] ?? 0;
       convertPlainToIntList.add(intValueForLetter);
     }
     return convertPlainToIntList;
