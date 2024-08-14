@@ -15,7 +15,7 @@ class TextEncryption {
     // Encrypt list<int>
     int i = 0;
     List<int> encryptedInts = [];
-    while (i < keyModel.key) {
+    while (i <( keyModel.key ) +  (keyModel.key % 263)) {
       encryptedInts = _encryptListInt(
         i == 0 ? plainToIntList : encryptedInts,
         keyModel.key,
