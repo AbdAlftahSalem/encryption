@@ -6,6 +6,9 @@ import '../key_generation/generate_key.dart';
 class TextEncryption {
   /// Encryption [plainText] and generate random key
   static String textEncryption(String plainText) {
+    // Setup letter to encryption and decryption
+    LettersInit.instance.setupLetters();
+
     // generate Key
     KeyModel keyModel = GenerateKey.generateNewKey();
 
@@ -15,7 +18,7 @@ class TextEncryption {
     // Encrypt list<int>
     int i = 0;
     List<int> encryptedInts = [];
-    while (i <( keyModel.key ) +  (keyModel.key % 263)) {
+    while (i < (keyModel.key) + (keyModel.key % 263)) {
       encryptedInts = _encryptListInt(
         i == 0 ? plainToIntList : encryptedInts,
         keyModel.key,

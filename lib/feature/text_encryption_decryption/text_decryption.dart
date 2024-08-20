@@ -6,6 +6,9 @@ import '../key_generation/generate_key.dart';
 class TextDecryption {
   /// Decryption [cipherText] and extract key from it .
   static String textDecryption(String cipherText) {
+    // Setup letter to encryption and decryption
+    LettersInit.instance.setupLetters();
+
     // extract key from Cipher Text
     String key = ExtractKey.extractKey(cipherText);
 
@@ -19,7 +22,7 @@ class TextDecryption {
     List<int> plainInts = [];
     int i = 0;
     KeyModel keyModel = GenerateKey.getFullKey(key);
-    while (i <( keyModel.key ) +  (keyModel.key % 263)) {
+    while (i < (keyModel.key) + (keyModel.key % 263)) {
       plainInts = _convertCipherListIntToPlainListInt(
         i == 0 ? cipherTextAsInt : plainInts,
         key,
