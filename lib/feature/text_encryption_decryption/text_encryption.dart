@@ -41,7 +41,7 @@ class TextEncryption {
     String encryptedStringWithKeyWithLength =
         _addLengthToCipheredText(encryptedStringWithKey);
 
-    return encryptedStringWithKey;
+    return encryptedStringWithKeyWithLength;
   }
 
   /// Convert Plain String to list of plain int

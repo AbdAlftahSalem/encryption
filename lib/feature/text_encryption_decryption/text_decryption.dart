@@ -9,6 +9,21 @@ class TextDecryption {
     // Setup letter to encryption and decryption
     LettersInit.instance.setupLetters();
 
+    List<String> cipherList = cipherText.split("");
+
+    String firstLetter = cipherList.first;
+    String lastLetter = cipherList.last;
+
+    int firstInt = LettersInit.instance.lettersWithStringKey[firstLetter] ?? 0;
+    int secInt = LettersInit.instance.lettersWithStringKey[lastLetter] ?? 0;
+
+    int length = firstInt + secInt;
+
+    cipherList.removeAt(0);
+    cipherList.removeLast();
+
+    cipherText = cipherList.join();
+
     // extract key from Cipher Text
     String key = ExtractKey.extractKey(cipherText);
 
@@ -24,9 +39,7 @@ class TextDecryption {
     KeyModel keyModel = GenerateKey.getFullKey(key);
     while (i < (keyModel.key) + (keyModel.key % 263)) {
       plainInts = _convertCipherListIntToPlainListInt(
-        i == 0 ? cipherTextAsInt : plainInts,
-        key,
-      );
+          i == 0 ? cipherTextAsInt : plainInts, key, length);
       ++i;
     }
     // Convert Plain List<int> to readable String
@@ -47,11 +60,11 @@ class TextDecryption {
 
   /// Decryption Cipher Text List<Int>
   static List<int> _convertCipherListIntToPlainListInt(
-      List<int> cipherInts, String key) {
+      List<int> cipherInts, String key, int length) {
     KeyModel keyModel = GenerateKey.getFullKey(key);
     List<int> plainInts = [];
     for (int i in cipherInts) {
-      int plainInt = (i - keyModel.key) % LettersInit.instance.length;
+      int plainInt = (i - keyModel.key) % length;
       plainInts.add(plainInt);
     }
 
