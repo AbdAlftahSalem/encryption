@@ -22,6 +22,11 @@ void main(List<String> arguments) {
   String cipherArString = TextEncryption.textEncryption(plainArString);
   String encipherArString = TextDecryption.textDecryption(cipherArString);
 
+  // Test numbers [ Numbers ]
+  String numberPlainArString = "1245451";
+  String numberCipherArString = TextEncryption.textEncryption(numberPlainArString);
+  String numberEncipherArString = TextDecryption.textDecryption(numberCipherArString);
+
   print("\n" + ("*" * 25) + "  Test EN String  " + ("*" * 25));
   print("Plain EN Text     : $plainEnString");
   print("Cipher EN Text    : $cipherEnString");
@@ -36,4 +41,9 @@ void main(List<String> arguments) {
   print("Plain AR Text     : $plainArString");
   print("Cipher AR Text    : $cipherArString");
   print("Encipher AR Text  : $encipherArString");
+
+  print("\n" + ("*" * 25) + "  Test Numbers  " + ("*" * 25));
+  print("Plain Number Text     : $numberPlainArString");
+  print("Cipher Number Text    : $numberCipherArString");
+  print("Encipher Number Text  : $numberEncipherArString");
 }

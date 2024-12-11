@@ -6,7 +6,7 @@ class ArLetters {
 
   ArLetters._internal();
 
-  Map<String, int> arLettersStringKey = {
+  Map<String, int>  arLettersStringKey = {
     "أ": 77,
     "ا": 78,
     "ب": 79,

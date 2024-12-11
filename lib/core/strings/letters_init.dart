@@ -1,6 +1,7 @@
 import './letters/symbol.dart';
-import 'letters/en_letters.dart';
 import 'letters/ar_letters.dart';
+import 'letters/en_letters.dart';
+import 'letters/numbers.dart';
 
 class LettersInit {
   // create singleton for ConstStrings
@@ -28,6 +29,10 @@ class LettersInit {
     // Setup AR letters
     lettersWithStringKey.addAll(ArLetters.instance.arLettersStringKey);
     lettersWithIntKey.addAll(ArLetters.instance.arLettersIntKey);
+
+    // Add nu,bers
+    lettersWithStringKey.addAll(Numbers.instance.symbolsWithStringKey);
+    lettersWithIntKey.addAll(Numbers.instance.symbolsWithIntKey);
 
     length = lettersWithStringKey.length;
   }
