@@ -15,7 +15,7 @@ void main(List<String> arguments) {
   String plainSymbolString = "(=++*/\$@!*)";
   String cipherSymbolString = TextEncryption.textEncryption(plainSymbolString);
   String encipherSymbolString =
-      TextDecryption.textDecryption(cipherSymbolString);
+  TextDecryption.textDecryption(cipherSymbolString);
 
   // Test normal String [ AR ]
   String plainArString = "عبد الفتاح نضال الشنطي";
