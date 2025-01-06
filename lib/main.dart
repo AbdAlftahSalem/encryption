@@ -27,22 +27,22 @@ void main(List<String> arguments) {
   String numberCipherArString = TextEncryption.textEncryption(numberPlainArString);
   String numberEncipherArString = TextDecryption.textDecryption(numberCipherArString);
 
-  print("\n" + ("*" * 25) + "  Test EN String  " + ("*" * 25));
+  print("\n${"*" * 25}  Test EN String  ${"*" * 25}");
   print("Plain EN Text     : $plainEnString");
   print("Cipher EN Text    : $cipherEnString");
   print("Encipher EN Text  : $encipherEnString");
 
-  print("\n" + ("*" * 25) + "  Test Symbols String  " + ("*" * 25));
+  print("\n${"*" * 25}  Test Symbols String  ${"*" * 25}");
   print("Plain Symbol Text     : $plainSymbolString");
   print("Cipher Symbol Text    : $cipherSymbolString");
   print("Encipher Symbol Text  : $encipherSymbolString");
 
-  print("\n" + ("*" * 25) + "  Test AR String  " + ("*" * 25));
+  print("\n${"*" * 25}  Test AR String  ${"*" * 25}");
   print("Plain AR Text     : $plainArString");
   print("Cipher AR Text    : $cipherArString");
   print("Encipher AR Text  : $encipherArString");
 
-  print("\n" + ("*" * 25) + "  Test Numbers  " + ("*" * 25));
+  print("\n${"*" * 25}  Test Numbers  ${"*" * 25}");
   print("Plain Number Text     : $numberPlainArString");
   print("Cipher Number Text    : $numberCipherArString");
   print("Encipher Number Text  : $numberEncipherArString");
